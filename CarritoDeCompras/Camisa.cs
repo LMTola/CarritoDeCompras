@@ -8,11 +8,43 @@ namespace CarritoDeCompras
 {
     class Camisa
     {
-        private const double Precio = 1000;
-
-        public double GetPrecio()
+        public static double DescuentoMedio
         {
-            return Precio;
+            get { return 10.0; }
         }
+        public static double Precio
+        {
+            get { return 1000.0; }
+        }
+
+        public static double DescuentoMayor
+        {
+            get { return 20.0; }
+        }
+
+        public static double Descuento(int cantidad)
+        {
+            if (cantidad >= 3 && cantidad <= 5)
+                return Camisa.DescuentoMedio;
+            else if (cantidad >= 5)
+                return Camisa.DescuentoMayor;
+
+            return 0.0;
+
+        }
+
+
+        public static double PrecioTotal(int cantidad)
+        {
+            return cantidad*Precio;
+        }
+
+        public static double PrecioTotalConDescuento(int cantidad)
+        {
+            return ((Precio * (100 - Descuento(cantidad))) / 100)*cantidad;
+        }
+
+
+
     }
 }
